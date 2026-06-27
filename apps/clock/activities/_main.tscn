@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://7shhnfi4l12f"]
 
-[ext_resource type="Script" uid="uid://58isug8rhqbo" path="user://apps/clock/activities/_main.gd" id="1_ljru8"]
+[ext_resource type="Script" uid="uid://58isug8rhqbo" path="res://apps/clock/activities/_main.gd" id="1_ljru8"]
 [ext_resource type="FontFile" uid="uid://cnoe4mp5mmjtg" path="res://res/os2/fonts/InstrumentSans-Regular.ttf" id="1_x786t"]
 [ext_resource type="Texture2D" uid="uid://d0mrhgwt0amit" path="res://apps/calculator/res/icon_add_alarm.svg" id="2_0hxjn"]
 [ext_resource type="Script" uid="uid://bgqglerkcylxx" path="res://addons/SmoothScroll/smooth_scroll_container.gd" id="2_r2a1j"]
-[ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_sdamper/expo_scroll_damper.gd" id="3_ibss2"]
-[ext_resource type="Texture2D" uid="uid://dnm5jyrkxkfqf" path="res://res/TEST/customWallpaper.jpg" id="4_t7x85"]
+[ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="3_ibss2"]
+[ext_resource type="PackedScene" uid="uid://kmtnp2kb0pk6" path="res://apps/clock/activities/alarm.tscn" id="4_ibss2"]
 
 [sub_resource type="Resource" id="Resource_t7x85"]
 script = ExtResource("3_ibss2")
@@ -59,7 +59,7 @@ dragging_scroll_damper = SubResource("Resource_3ewr5")
 metadata/_custom_type_script = "uid://bgqglerkcylxx"
 
 [node name="Panel" type="Panel" parent="SmoothScrollContainer" unique_id=572419554]
-custom_minimum_size = Vector2(0, 5124)
+custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -67,32 +67,29 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_u0gvi")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="Label" type="Label" parent="SmoothScrollContainer/Panel" unique_id=1334468292]
-layout_mode = 0
-offset_left = 73.0
-offset_top = 153.0
-offset_right = 113.0
-offset_bottom = 176.0
-mouse_filter = 1
-text = " 对！！！"
+[node name="MarginContainer" type="MarginContainer" parent="SmoothScrollContainer/Panel" unique_id=551475110]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 20
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="TextureRect" type="TextureRect" parent="SmoothScrollContainer/Panel" unique_id=703092709]
-layout_mode = 0
-offset_left = -42.0
-offset_top = -49.0
-offset_right = 427.0
-offset_bottom = 883.0
-texture = ExtResource("4_t7x85")
-expand_mode = 1
-stretch_mode = 5
+[node name="VBoxContainer" type="VBoxContainer" parent="SmoothScrollContainer/Panel/MarginContainer" unique_id=904173803]
+layout_mode = 2
 metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Panel" parent="SmoothScrollContainer/Panel/MarginContainer/VBoxContainer" unique_id=850754684 instance=ExtResource("4_ibss2")]
+layout_mode = 2
 
 [node name="TitleBar" type="Control" parent="." unique_id=1636203934]
 anchors_preset = 0
 offset_right = 393.0
-offset_bottom = 852.0
-grow_horizontal = 2
+offset_bottom = 101.0
 mouse_filter = 2
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
@@ -102,8 +99,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -140.0
-offset_bottom = -766.0
+offset_top = -272.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1

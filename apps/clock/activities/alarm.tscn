@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://kmtnp2kb0pk6"]
+
+[ext_resource type="PackedScene" uid="uid://c6md3xf70jbpn" path="res://res/ui/Toggle.tscn" id="1_mbaj1"]
+[ext_resource type="FontFile" uid="uid://7ff1l064p7hs" path="res://res/os2/fonts/InstrumentSans-Bold.ttf" id="2_v6jqg"]
+[ext_resource type="FontFile" uid="uid://cnoe4mp5mmjtg" path="res://res/os2/fonts/InstrumentSans-Regular.ttf" id="3_ef4hc"]
+[ext_resource type="Texture2D" uid="uid://crio4hvldsje0" path="res://apps/calculator/res/discardAlarm.svg" id="4_2b07i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7x85"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqylk"]
+font = ExtResource("2_v6jqg")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ewr5"]
+font = ExtResource("3_ef4hc")
+font_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2103j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4k8n"]
+font = ExtResource("3_ef4hc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y5aw5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqylk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxc6v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhl6f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7h6a"]
+
+[node name="Alarm" type="PanelContainer" unique_id=651977761]
+offset_right = 355.0
+offset_bottom = 100.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7x85")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=661837087]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1537531652]
+custom_minimum_size = Vector2(255, 0.025)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=436605670]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer" unique_id=791834051]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2" unique_id=16653444]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+theme_override_constants/separation = -2
+alignment = 1
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=464366727]
+layout_mode = 2
+mouse_filter = 1
+text = "12:00"
+label_settings = SubResource("LabelSettings_rqylk")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1111347164]
+layout_mode = 2
+mouse_filter = 1
+text = "Encendida"
+label_settings = SubResource("LabelSettings_3ewr5")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="DisableAlarmToday" type="Panel" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2" unique_id=2095077812]
+visible = false
+modulate = Color(1, 0.53333336, 0, 1)
+custom_minimum_size = Vector2(0, 28.88)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2103j")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/DisableAlarmToday" unique_id=1898285146]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 214.0
+offset_bottom = 10.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/DisableAlarmToday/HBoxContainer" unique_id=1024422080]
+custom_minimum_size = Vector2(18.235, 0)
+layout_mode = 2
+texture = ExtResource("4_2b07i")
+expand_mode = 4
+stretch_mode = 5
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/DisableAlarmToday/HBoxContainer" unique_id=1121435760]
+layout_mode = 2
+mouse_filter = 1
+text = "Descartar alarma por hoy"
+label_settings = SubResource("LabelSettings_o4k8n")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="hitbox" type="Button" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/DisableAlarmToday" unique_id=1604203333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y5aw5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rqylk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vxc6v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uhl6f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c7h6a")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=73907273]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toggle" parent="HBoxContainer/Control" unique_id=121533135 instance=ExtResource("1_mbaj1")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -18.0
+offset_right = -19.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.845, 0.845)
+pivot_offset = Vector2(71, 18)
+size_flags_horizontal = 3
+colorAccentToggled = Color(1, 0.53333336, 0, 1)
