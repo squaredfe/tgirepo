@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://7shhnfi4l12f"]
+
+[ext_resource type="Script" uid="uid://58isug8rhqbo" path="user://apps/clock/activities/_main.gd" id="1_ljru8"]
+[ext_resource type="FontFile" uid="uid://cnoe4mp5mmjtg" path="res://res/os2/fonts/InstrumentSans-Regular.ttf" id="1_x786t"]
+[ext_resource type="Texture2D" uid="uid://d0mrhgwt0amit" path="res://apps/calculator/res/icon_add_alarm.svg" id="2_0hxjn"]
+[ext_resource type="Script" uid="uid://bgqglerkcylxx" path="res://addons/SmoothScroll/smooth_scroll_container.gd" id="2_r2a1j"]
+[ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_sdamper/expo_scroll_damper.gd" id="3_ibss2"]
+[ext_resource type="Texture2D" uid="uid://dnm5jyrkxkfqf" path="res://res/TEST/customWallpaper.jpg" id="4_t7x85"]
+
+[sub_resource type="Resource" id="Resource_t7x85"]
+script = ExtResource("3_ibss2")
+
+[sub_resource type="Resource" id="Resource_3ewr5"]
+script = ExtResource("3_ibss2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0gvi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2a1j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y5aw5"]
+font = ExtResource("1_x786t")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_0hxjn"]
+font = ExtResource("1_x786t")
+font_color = Color(1, 1, 1, 0.627451)
+
+[node name="Content" type="Control" unique_id=1104370404]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ljru8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1590612769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SmoothScrollContainer" type="ScrollContainer" parent="." unique_id=1622204083]
+layout_mode = 0
+offset_right = 393.0
+offset_bottom = 852.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical_custom_step = 3.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("2_r2a1j")
+speed = 3.0
+wheel_scroll_damper = SubResource("Resource_t7x85")
+dragging_scroll_damper = SubResource("Resource_3ewr5")
+metadata/_custom_type_script = "uid://bgqglerkcylxx"
+
+[node name="Panel" type="Panel" parent="SmoothScrollContainer" unique_id=572419554]
+custom_minimum_size = Vector2(0, 5124)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_u0gvi")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Label" type="Label" parent="SmoothScrollContainer/Panel" unique_id=1334468292]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 153.0
+offset_right = 113.0
+offset_bottom = 176.0
+mouse_filter = 1
+text = " 对！！！"
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="TextureRect" type="TextureRect" parent="SmoothScrollContainer/Panel" unique_id=703092709]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -49.0
+offset_right = 427.0
+offset_bottom = 883.0
+texture = ExtResource("4_t7x85")
+expand_mode = 1
+stretch_mode = 5
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="TitleBar" type="Control" parent="." unique_id=1636203934]
+anchors_preset = 0
+offset_right = 393.0
+offset_bottom = 852.0
+grow_horizontal = 2
+mouse_filter = 2
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="ColorRect" type="ColorRect" parent="TitleBar" unique_id=959757508]
+material = SubResource("ShaderMaterial_r2a1j")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+offset_bottom = -766.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleBar" unique_id=1617692773]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_right = -22.0
+offset_bottom = 64.0
+grow_horizontal = 2
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="LeftContainer" type="VBoxContainer" parent="TitleBar/HBoxContainer" unique_id=1132114169]
+layout_mode = 2
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Title" type="Label" parent="TitleBar/HBoxContainer/LeftContainer" unique_id=22199435]
+layout_mode = 2
+mouse_filter = 1
+text = "Alarmas"
+label_settings = SubResource("LabelSettings_y5aw5")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Subtitle" type="Label" parent="TitleBar/HBoxContainer/LeftContainer" unique_id=69635537]
+layout_mode = 2
+mouse_filter = 1
+text = "Sonara en 30 minutos"
+label_settings = SubResource("LabelSettings_0hxjn")
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="MarginRightButton" type="Control" parent="TitleBar/HBoxContainer" unique_id=971760080]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="AddAlarm" type="TextureRect" parent="TitleBar/HBoxContainer/MarginRightButton" unique_id=184026675]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_0hxjn")
+expand_mode = 2
+stretch_mode = 5
+metadata/_smooth_scroll_default_mouse_filter_set = true
