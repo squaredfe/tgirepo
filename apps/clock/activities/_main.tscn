@@ -549,6 +549,7 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_rqylk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vxc6v")
 text = "11:40"
 alignment = 1
+virtual_keyboard_enabled = false
 virtual_keyboard_type = 2
 
 [node name="Panel2" type="Panel" parent="AddAlarmUI/AlarmAddUI/VBoxContainer" unique_id=367200524]
