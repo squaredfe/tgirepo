@@ -153,7 +153,6 @@ offset_right = -19.0
 offset_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(0.845, 0.845)
 pivot_offset = Vector2(71, 18)
 size_flags_horizontal = 3
 colorAccentToggled = Color(1, 0.53333336, 0, 1)
