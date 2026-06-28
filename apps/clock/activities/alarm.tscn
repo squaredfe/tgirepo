@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6md3xf70jbpn" path="res://res/ui/Toggle.tscn" id="1_mbaj1"]
 [ext_resource type="FontFile" uid="uid://7ff1l064p7hs" path="res://res/os2/fonts/InstrumentSans-Bold.ttf" id="2_v6jqg"]
 [ext_resource type="FontFile" uid="uid://cnoe4mp5mmjtg" path="res://res/os2/fonts/InstrumentSans-Regular.ttf" id="3_ef4hc"]
-[ext_resource type="Texture2D" uid="uid://crio4hvldsje0" path="res://apps/calculator/res/discardAlarm.svg" id="4_2b07i"]
+[ext_resource type="Texture2D" uid="uid://crio4hvldsje0" path="res://apps/clock/res/discardAlarm.svg" id="4_2b07i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7x85"]
 bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
