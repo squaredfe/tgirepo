@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://kmtnp2kb0pk6"]
 
+[ext_resource type="Script" uid="uid://b6i8ahkolbol6" path="res://apps/clock/activities/components/alarm.gd" id="1_hjklq"]
 [ext_resource type="PackedScene" uid="uid://c6md3xf70jbpn" path="res://res/ui/Toggle.tscn" id="1_mbaj1"]
 [ext_resource type="FontFile" uid="uid://7ff1l064p7hs" path="res://res/os2/fonts/InstrumentSans-Bold.ttf" id="2_v6jqg"]
 [ext_resource type="FontFile" uid="uid://cnoe4mp5mmjtg" path="res://res/os2/fonts/InstrumentSans-Regular.ttf" id="3_ef4hc"]
@@ -40,6 +41,7 @@ offset_right = 355.0
 offset_bottom = 100.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7x85")
+script = ExtResource("1_hjklq")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=661837087]
@@ -69,14 +71,14 @@ theme_override_constants/separation = -2
 alignment = 1
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=464366727]
+[node name="Time" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=464366727]
 layout_mode = 2
 mouse_filter = 1
 text = "12:00"
 label_settings = SubResource("LabelSettings_rqylk")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1111347164]
+[node name="State" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1111347164]
 layout_mode = 2
 mouse_filter = 1
 text = "Encendida"
@@ -155,4 +157,5 @@ grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(71, 18)
 size_flags_horizontal = 3
+toggled = true
 colorAccentToggled = Color(1, 0.53333336, 0, 1)

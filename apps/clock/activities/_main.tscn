@@ -6,14 +6,13 @@
 [ext_resource type="Script" uid="uid://bgqglerkcylxx" path="res://addons/SmoothScroll/smooth_scroll_container.gd" id="2_r2a1j"]
 [ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="3_ibss2"]
 [ext_resource type="Texture2D" uid="uid://2tcye11svde5" path="res://apps/clock/res/sleepRoutineImageSample.png" id="4_3cvxo"]
-[ext_resource type="PackedScene" uid="uid://kmtnp2kb0pk6" path="res://apps/clock/activities/alarm.tscn" id="4_ibss2"]
 [ext_resource type="Texture2D" uid="uid://cecwq7r7q2f12" path="res://apps/clock/res/routineSleepIcon.svg" id="5_wjd6m"]
 [ext_resource type="Script" uid="uid://dqvmtyg3o3aic" path="res://res/ui/ButtonHaptics.gd" id="7_na761"]
 [ext_resource type="PackedScene" uid="uid://0o8iv8eqbhws" path="res://res/ui/NavBarSection.tscn" id="7_t7x85"]
 [ext_resource type="Texture2D" uid="uid://bs71sr5xsn57" path="res://apps/clock/res/clock.svg" id="8_nhame"]
 [ext_resource type="Texture2D" uid="uid://ccg14n22a6qyu" path="res://apps/clock/res/stopwatch.svg" id="9_bfq43"]
 [ext_resource type="Texture2D" uid="uid://bvskvb8lshhtu" path="res://apps/clock/res/timer.svg" id="10_j8gy6"]
-[ext_resource type="Script" uid="uid://c67vooo5vn52l" path="res://apps/clock/activities/slideHitboxareaClockAddAlarm.gd" id="11_4infp"]
+[ext_resource type="Script" uid="uid://c67vooo5vn52l" path="res://apps/clock/activities/components/slideHitboxareaClockAddAlarm.gd" id="11_4infp"]
 [ext_resource type="PackedScene" uid="uid://ci8ngkmarfx5y" path="res://res/ui/ButtonIcon.tscn" id="11_infna"]
 [ext_resource type="Texture2D" uid="uid://rgxliyap3rdc" path="res://apps/clock/res/cancel.svg" id="11_j8gy6"]
 [ext_resource type="FontFile" uid="uid://7ff1l064p7hs" path="res://res/os2/fonts/InstrumentSans-Bold.ttf" id="13_infna"]
@@ -24,10 +23,8 @@ script = ExtResource("3_ibss2")
 [sub_resource type="Resource" id="Resource_3ewr5"]
 script = ExtResource("3_ibss2")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0gvi"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7x85"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+bg_color = Color(0.07846785, 0.07846785, 0.07846785, 1)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -76,6 +73,10 @@ border_color = Color(0.8001019, 0.8001019, 0.8001019, 0.223)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0gvi"]
 bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_22s5l"]
 
@@ -83,10 +84,10 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0.0859375, 0.0859375, 0.0859375, 1)
 border_width_top = 1
 border_color = Color(0.8001019, 0.8001019, 0.8001019, 0.5)
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 corner_detail = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_u0gvi"]
@@ -133,6 +134,7 @@ corner_radius_bottom_right = 512
 corner_radius_bottom_left = 512
 
 [node name="Content" type="Control" unique_id=1104370404]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,12 +153,36 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="ClockTab" type="ScrollContainer" parent="." unique_id=280072074]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical_custom_step = 3.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("2_r2a1j")
+speed = 3.0
+wheel_scroll_damper = SubResource("Resource_t7x85")
+dragging_scroll_damper = SubResource("Resource_3ewr5")
+metadata/_custom_type_script = "uid://bgqglerkcylxx"
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Panel" type="MarginContainer" parent="ClockTab" unique_id=1051188360]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
 [node name="AlarmTab" type="ScrollContainer" parent="." unique_id=1622204083]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 852.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 scroll_vertical_custom_step = 3.0
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
@@ -166,25 +192,18 @@ wheel_scroll_damper = SubResource("Resource_t7x85")
 dragging_scroll_damper = SubResource("Resource_3ewr5")
 metadata/_custom_type_script = "uid://bgqglerkcylxx"
 
-[node name="Panel" type="Panel" parent="AlarmTab" unique_id=572419554]
-custom_minimum_size = Vector2(0, 1)
+[node name="Panel" type="MarginContainer" parent="AlarmTab" unique_id=560182332]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_u0gvi")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
 [node name="MarginContainer" type="MarginContainer" parent="AlarmTab/Panel" unique_id=551475110]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 110
 theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 150
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AlarmTab/Panel/MarginContainer" unique_id=904173803]
@@ -192,37 +211,38 @@ layout_mode = 2
 theme_override_constants/separation = 8
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="Control" type="Control" parent="AlarmTab/Panel/MarginContainer/VBoxContainer" unique_id=1200289334]
+[node name="SleepRoutineSuggestion" type="Control" parent="AlarmTab/Panel/MarginContainer/VBoxContainer" unique_id=1200289334]
 custom_minimum_size = Vector2(0, 315)
 layout_mode = 2
 mouse_filter = 1
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="SleepRoutineSuggestion" type="PanelContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control" unique_id=651977761]
-clip_children = 2
-z_index = 1
+[node name="SleepRoutineSuggestion" type="PanelContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion" unique_id=651977761]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7x85")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion" unique_id=100578993]
+[node name="VBoxContainer" type="VBoxContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion" unique_id=100578993]
 layout_mode = 2
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="TextureRect" type="TextureRect" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer" unique_id=1917574463]
+[node name="TextureRect" type="TextureRect" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer" unique_id=1917574463]
 material = SubResource("CanvasItemMaterial_3cvxo")
 layout_mode = 2
+offset_transform_enabled = true
 texture = ExtResource("4_3cvxo")
+stretch_mode = 6
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="TextureRect" type="TextureRect" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer/TextureRect" unique_id=1615716562]
+[node name="TextureRect" type="TextureRect" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer/TextureRect" unique_id=1615716562]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,7 +252,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_u0gvi")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="MarginContainer" type="MarginContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer" unique_id=1533814111]
+[node name="MarginContainer" type="MarginContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer" unique_id=1533814111]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
@@ -240,16 +260,16 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer/MarginContainer" unique_id=1673570009]
+[node name="VBoxContainer" type="VBoxContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer/MarginContainer" unique_id=1673570009]
 layout_mode = 2
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1250444916]
+[node name="HBoxContainer" type="HBoxContainer" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1250444916]
 layout_mode = 2
 theme_override_constants/separation = 8
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="TextureRect" type="TextureRect" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=278170995]
+[node name="TextureRect" type="TextureRect" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=278170995]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 4
@@ -257,23 +277,20 @@ texture = ExtResource("5_wjd6m")
 expand_mode = 1
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="Label" type="Label" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=229110172]
+[node name="Label" type="Label" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=229110172]
 layout_mode = 2
 mouse_filter = 1
 text = "Crear una rutina"
 label_settings = SubResource("LabelSettings_rqylk")
 metadata/_smooth_scroll_default_mouse_filter_set = true
 
-[node name="Label" type="Label" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/Control/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer" unique_id=451329861]
+[node name="Label" type="Label" parent="AlarmTab/Panel/MarginContainer/VBoxContainer/SleepRoutineSuggestion/SleepRoutineSuggestion/VBoxContainer/MarginContainer/VBoxContainer" unique_id=451329861]
 layout_mode = 2
 mouse_filter = 1
 text = "Crea tu rutina de sueño para poder manejar que pasa con tu dispositivo cuando te vas a dormir."
 label_settings = SubResource("LabelSettings_vxc6v")
 autowrap_mode = 3
 metadata/_smooth_scroll_default_mouse_filter_set = true
-
-[node name="Panel" parent="AlarmTab/Panel/MarginContainer/VBoxContainer" unique_id=850754684 instance=ExtResource("4_ibss2")]
-layout_mode = 2
 
 [node name="TitleBar" type="Control" parent="." unique_id=1636203934]
 layout_mode = 1
@@ -427,6 +444,7 @@ texture = ExtResource("10_j8gy6")
 text = "Temporizador"
 
 [node name="AddAlarmUI" type="Control" parent="." unique_id=931291]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -447,6 +465,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u0gvi")
 
 [node name="AlarmAddUI" type="Panel" parent="AddAlarmUI" unique_id=566568365]
 material = SubResource("ShaderMaterial_22s5l")
+custom_maximum_size = Vector2(400, -1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
